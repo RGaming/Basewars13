@@ -1,0 +1,8 @@
+"Gamemode"
+{
+	"base"		"sandbox"
+	"title"		"RGBasewars"
+	"maps"		""
+	"menusystem"	"1"
+	"workshopid"	""
+}
