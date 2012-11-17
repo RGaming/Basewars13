@@ -11,5 +11,11 @@ function PlayerExists( SteamID )
 end
 
 function CreatePlayer( SteamID )
-	SqlString = "SELECT EXISTS(SELECT 1 FROM Basewars13 WHERE SteamID = %s);"
+	SqlString = "INSERT INTO Basewars13(SteamID, Money) VALUES (%s, 0);"
+	sql.Query(string.format(SqlString, sql.SQLStr(SteamID)))
+end
+
+function SetPlayer( SteamID, Money )
+	SqlString = "UPDATE Basewars13 SET Money=%d WHERE SteamID=%s;"
+	sql.Query(string.format(SqlString, Money, sql.SQLStr(SteamID)))
 end
