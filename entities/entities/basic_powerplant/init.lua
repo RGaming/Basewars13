@@ -24,6 +24,11 @@ function ENT:RemoveSlots()
 	
 end
 
+function ENT:Think(  )
+	self.Entity:NextThink(CurTime()+1)
+	return true
+end
+
 -- function ENT:Think()
 -- 	local x = ents.FindInSphere(self:GetPos(), 1024) -- List of entities nearby
 -- 	for k, v in pairs(x) do
