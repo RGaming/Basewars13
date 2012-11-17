@@ -16,10 +16,10 @@ function ENT:Initialize()
 end
 
 function ENT:Use( activator, caller )
-	AddMoney(activator, self.worth)
-	self:Remove()
+	return
 end
 
-function ENT:SetWorth( worth )
-	self.worth = worth
-end
+function ENT:Think()
+	x = ents.FindInSphere(self:GetPos(), 1024)
+	for k, v in pairs(x)
+		

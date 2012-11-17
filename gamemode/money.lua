@@ -12,7 +12,7 @@ end
 
 --Boilerplate shit
 function GetMoney(ply)
-	ply:GetNWInt("Money", 5000)
+	return ply:GetNWInt("Money", 5000)
 end
 
 function CanAfford( ply, amount )
@@ -25,12 +25,15 @@ end
 
 function AddMoney( ply, amount ) 
 	ply:SetNWInt("Money", ply:GetNWInt("Money", 5000) + amount)
+	SetMoney(ply:SteamID(), GetMoney(ply))
 end
 
 function SetMoney( ply, amount )
 	ply:SetNWInt("Money", amount)
+	SetMoney(ply:SteamID(), GetMoney(ply))
 end
 
 function RemoveMoney( ply, amount )
 	ply:SetNWInt("Money", ply:GetNWInt("Money", 5000) - amount)
+	SetMoney(ply:SteamID(), GetMoney(ply))
 end

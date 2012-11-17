@@ -8,6 +8,3 @@ function buyprinter( ply )
 	else
 		printer:Remove()
 end
-concommand.Add( buyprint,function ( ply )
-	buyprinter(ply)
-end )

@@ -3,17 +3,26 @@ if not sql.TableExists( "Basewars13" ) then
 end
 
 --Fucking clusterfuck of a function
+-- function PlayerExists( SteamID )
+-- 	SqlString = "SELECT EXISTS(SELECT 1 FROM Basewars13 WHERE SteamID=%s);"
+-- 	for key, value in pairs(sql.Query(string.format(SqlString, sql.SQLStr(SteamID)))[1]) do
+-- 		if value == 1 then
+-- 			exists = true
+-- 		end
+-- 	end
+-- 	if exists then
+-- 		return true
+-- 	else
+-- 		return false
+-- 	end
+-- end
 function PlayerExists( SteamID )
-	SqlString = "SELECT EXISTS(SELECT 1 FROM Basewars13 WHERE SteamID=%s);"
-	for key, value in pairs(sql.Query(string.format(SqlString, sql.SQLStr(SteamID)))[1]) do
-		if value == 1 then
-			exists = true
-		end
-	end
-	if exists then
-		return true
+	local sqlString = "SELECT Money FROM Basewars13 WHERE SteamID='"..SteamID.."'"
+	local x = sql.Query(sqlString)
+	if x == nil then
+		print("False")
 	else
-		return false
+		print("True")
 	end
 end
 
