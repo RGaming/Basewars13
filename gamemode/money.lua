@@ -25,15 +25,15 @@ end
 
 function AddMoney( ply, amount ) 
 	ply:SetNWInt("Money", ply:GetNWInt("Money", 5000) + amount)
-	SetMoney(ply:SteamID(), GetMoney(ply))
+	UpdatePlayer(ply:SteamID(), GetMoney(ply))
 end
 
 function SetMoney( ply, amount )
 	ply:SetNWInt("Money", amount)
-	SetMoney(ply:SteamID(), GetMoney(ply))
+	UpdatePlayer(ply:SteamID(), GetMoney(ply))
 end
 
 function RemoveMoney( ply, amount )
 	ply:SetNWInt("Money", ply:GetNWInt("Money", 5000) - amount)
-	SetMoney(ply:SteamID(), GetMoney(ply))
+	UpdatePlayer(ply:SteamID(), GetMoney(ply))
 end

@@ -13,18 +13,26 @@ function ENT:Initialize()
 		phys:Wake()
 	end
 	timer.Create("timer1", self.Delay, 0, function () self:Payday() end)
+	local Powered = false
 end
 
 function ENT:Payday()
-	local cash = ents.Create("cash")
-	local pay = math.random(self.PayLow, self.PayHigh)
-	cash:SetWorth(self.Payout)
-	position = self.GetPos(self)
-	cash:SetPos(position)
-	cash:Spawn()
+	if self.Powered then
+		local cash = ents.Create("cash")
+		local pay = math.random(self.PayLow, self.PayHigh)
+		cash:SetWorth(self.Payout)
+		position = self.GetPos(self)
+		cash:SetPos(position)
+		cash:Spawn()
 end
 
 function ENT:Use( activator, caller )
 	--self:Payday()
 	return
+end
+
+function ENT:Power( Source )
+	if Source:CanPower(self.PowerUsage) then
+		Source:RemoveSlots(self.PowerUsage)
+		self.Powered = true
 end
