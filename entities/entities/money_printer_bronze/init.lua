@@ -24,6 +24,7 @@ function ENT:Payday()
 		position = self.GetPos(self)
 		cash:SetPos(position)
 		cash:Spawn()
+	end
 end
 
 function ENT:Use( activator, caller )
