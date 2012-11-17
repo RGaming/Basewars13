@@ -40,6 +40,7 @@ function ENT:Think()
 		TempTable[i] = value
 		i = i - 1
 	end
+	self.PoweredEntities = {}
 	for key, value in pairs(TempTable) do
 		self.PoweredEntities[key] = value
 	end
@@ -64,13 +65,13 @@ function ENT:Think()
 	end
 
 	--Power the entities in the PoweredEntities table
-	print("Broke III of the broke towers")
+	print(self.PoweredEntities)
+	PrintTable(self.PoweredEntities)
 	for key, value in pairs(self.PoweredEntities) do
 		print("Raep time")
 		print(value)
 		value:Power()
 	end
-	PrintTable(self.PoweredEntities)
 end
 
 -- function ENT:Think()
