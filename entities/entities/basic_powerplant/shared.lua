@@ -1,7 +1,7 @@
 ENT.Type = "anim"
 ENT.Base = "base_gmodentity"
  
-ENT.PrintName		= "Cash"
+ENT.PrintName		= "Power Plant"
 ENT.Author			= "[RG]Uggleking"
 ENT.Contact			= "Don't"
 ENT.Purpose			= "Make it rain baby"
