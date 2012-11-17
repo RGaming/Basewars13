@@ -3,7 +3,7 @@ if not sql.TableExists( "Basewars13" )
 end
 
 function PlayerExists( SteamID )
-	SqlString = "SELECT EXISTS(SELECT 1 FROM Basewars13 WHERE SteamID = %s);"
+	SqlString = "SELECT EXISTS(SELECT 1 FROM Basewars13 WHERE SteamID=%s);"
 	if sql.Query(string.format(SqlString, sql.SQLStr(SteamID))) then
 		return true
 	else
@@ -15,7 +15,8 @@ function CreatePlayer( SteamID )
 	sql.Query(string.format(SqlString, sql.SQLStr(SteamID)))
 end
 
-function SetPlayer( SteamID, Money )
-	SqlString = "UPDATE Basewars13 SET Money=%d WHERE SteamID=%s;"
+function UpdatePlayer( SteamID, Money )
+	SqlString = "UPDATE Basewars13 SET Money=%s WHERE SteamID=%s;"
 	sql.Query(string.format(SqlString, Money, sql.SQLStr(SteamID)))
 end
+
