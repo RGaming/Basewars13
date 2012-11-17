@@ -20,3 +20,7 @@ function UpdatePlayer( SteamID, Money )
 	sql.Query(string.format(SqlString, Money, sql.SQLStr(SteamID)))
 end
 
+function GetPlayer( SteamID )
+	SqlString = "SELECT Money FROM Basewars13 WHERE SteamID=%s;"
+	return sql.Query(string.format(SqlString, sql.SQLStr(SteamID)))
+end
