@@ -35,4 +35,5 @@ function ENT:Power( Source )
 	if Source:CanPower(self.PowerUsage) then
 		Source:RemoveSlots(self.PowerUsage)
 		self.Powered = true
+	end
 end
