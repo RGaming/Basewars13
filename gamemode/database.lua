@@ -3,8 +3,8 @@ if not sql.TableExists( "Basewars13" ) then
 end
 
 function PlayerExists( SteamID )
-	local SqlString = "SELECT Money FROM Basewars13 WHERE SteamID=%s"
-	if sql.Query(string.format(sqlString, sql.SQLStr(SteamID))) == nil then
+	local SqlString = "SELECT 1 FROM Basewars13 WHERE SteamID=%s"
+	if sql.Query(string.format(SqlString, sql.SQLStr(SteamID))) == nil then
 		return false
 	else
 		return true
