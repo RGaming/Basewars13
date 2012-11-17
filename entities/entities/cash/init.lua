@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()
 	-- Boiler plate
-	self.Entity:SetModel( "models/Combine_Helicopter/helicopter_bomb01.mdl" )
+	self.Entity:SetModel( "models/props/cs_assault/Money.mdl" )
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
