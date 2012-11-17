@@ -26,7 +26,7 @@ function ENT:Think()
 	local EmptySlots = 0
 	--Invalidate entities that don't exist and count up the empty slots
 	for i=1, self.PowerSlots, 1 do
-		if not self.PoweredEntities[i]:IsValid()
+		if not self.PoweredEntities[i]:IsValid() then
 			self.PoweredEntities[i] = nil
 			EmptySlots = EmptySlots + 1
 		end
@@ -44,14 +44,16 @@ function ENT:Think()
 	end
 
 	--Insert new entities into the PoweredEntities table
-	if self.SlotsUsed < self.PowerSlots do
+	if self.SlotsUsed < self.PowerSlots then
 		i = 1
 		local NewEntityList = ents.FindInSphere(self:GetPos(), self.PowerDist)
 		for key, value in pairs(NewEntityList) do
-			if value.PowerUsage != nil and self.SlotsUsed < self.PowerSlots do
-				self.PoweredEntities[i] = value
-				self.SlotsUsed = self.SlotsUsed + 1
-				i = i + 1
+			if value.PowerUsage != nil and self.SlotsUsed + value.PowerUsage <= self.PowerSlots then
+				for j=1, value.PowerUsage, 1 do
+					self.PoweredEntities[i] = value
+					self.SlotsUsed = self.SlotsUsed + 1
+					i = i + 1
+				end
 			else
 				break
 			end
