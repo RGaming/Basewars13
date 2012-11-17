@@ -24,11 +24,11 @@ function ENT:RemoveSlots()
 	
 end
 
-function ENT:Think()
-	local x = ents.FindInSphere(self:GetPos(), 1024)
-	for k, v in pairs(x) do
-		if v.PowerUsage > 0 and not v.Powered then
-			v:Power(self)
-		end
-	end
-end
+-- function ENT:Think()
+-- 	local x = ents.FindInSphere(self:GetPos(), 1024) -- List of entities nearby
+-- 	for k, v in pairs(x) do
+-- 		if v.PowerUsage > 0 and not v.Powered then
+-- 			v:Power(self)
+-- 		end
+-- 	end
+-- end
