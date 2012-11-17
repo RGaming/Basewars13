@@ -9,4 +9,4 @@ function buyprint_bronze( ply, cmd, args )
 		printer:Remove()
 	end
 end
-Add("buyprint_bronze", buyprint_bronze)
+concommand.Add("buyprint_bronze", buyprint_bronze)
