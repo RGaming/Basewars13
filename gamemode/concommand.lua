@@ -1,12 +1,12 @@
-function buyprint_bronze( ply, cmd, args )
-	local printer = ents.Create("money_printer_bronze")
-	if CanAfford(ply, printer.Price) then
-		RemoveMoney(ply, printer.Price)
+function buy_entity( ply, cmd, args )
+	local entity = ents.Create(args[1])
+	if CanAfford(ply, entity.Price) then
+		RemoveMoney(ply, entity.Price)
 		position = ply:GetPos()
-		printer:SetPos(position)
-		printer:Spawn()
+		entity:SetPos(position)
+		entity:Spawn()
 	else
-		printer:Remove()
+		entity:Remove()
 	end
 end
-concommand.Add("buyprint_bronze", buyprint_bronze)
+concommand.Add("buy_entity", buy_entity)
