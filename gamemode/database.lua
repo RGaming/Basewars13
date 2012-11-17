@@ -1,4 +1,4 @@
-if not sql.TableExists( "Basewars13" )
+if not sql.TableExists( "Basewars13" ) then
 	sql.Query( "CREATE TABLE IF NOT EXISTS Basewars13 (SteamID TEXT, Money REAL);" )
 end
 

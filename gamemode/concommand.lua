@@ -1,7 +1,13 @@
-concommand.Add( "addmoney", function ( ply,args )
-	for k,v in pairs(player.GetHuman())
-		if v.Nick() == args[1]
-			v:AddMoney(v, args[2])	
-		end
-	end
-end)
+function buyprinter( ply )
+	local printer = ents.Create("money_printer_bronze")
+	if CanAfford(ply, printer.Price) then
+		RemoveMoney(ply, printer.Price)
+		position = ply:GetPos()
+		printer:SetPos(position)
+		printer:Spawn()
+	else
+		printer:Remove()
+end
+concommand.Add( buyprint,function ( ply )
+	buyprinter(ply)
+end )

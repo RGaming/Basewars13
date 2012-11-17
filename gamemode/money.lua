@@ -1,7 +1,7 @@
 include("database.lua")
 function GM:PlayerInitialSpawn( ply ) --So when peopel spawn they don't have 0 money
     local ID = ply:SteamID()
-    if PlayerExists(ID)
+    if PlayerExists(ID) then
     	SetMoney(ply,GetPlayer(ID))
     else
     	CreatePlayer(ID)
@@ -13,6 +13,14 @@ end
 --Boilerplate shit
 function GetMoney(ply)
 	ply:GetNWInt("Money", 5000)
+end
+
+function CanAfford( ply, amount )
+	if GetMoney(ply) < amount then
+		return false
+	else
+		return true
+	end
 end
 
 function AddMoney( ply, amount ) 
