@@ -13,13 +13,19 @@ function ENT:Initialize()
 		phys:Wake()
 	end
 	--
+	local slots_taken = 0
 end
 
 function ENT:Use( activator, caller )
 	return
 end
 
+function ENT:RemoveSlots()
+	
+end
+
 function ENT:Think()
-	x = ents.FindInSphere(self:GetPos(), 1024)
+	local x = ents.FindInSphere(self:GetPos(), 1024)
 	for k, v in pairs(x)
-		
+		if v.PowerUsage > 0 and not v.Powered then
+			v:Power(self)
