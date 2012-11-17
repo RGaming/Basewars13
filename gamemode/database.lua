@@ -5,9 +5,9 @@ end
 function PlayerExists( SteamID )
 	local SqlString = "SELECT Money FROM Basewars13 WHERE SteamID=%s"
 	if sql.Query(string.format(sqlString, sql.SQLStr(SteamID))) == nil then
-		return False
+		return false
 	else
-		return True
+		return true
 	end
 end
 
