@@ -3,6 +3,8 @@ AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "HUD.lua" )
 
 include( "shared.lua" )
+include("money.lua")
+include("concommand.lua")
 --include( "database.lua")
 
 function GM:PlayerSpawn( ply )
@@ -13,8 +15,4 @@ function GM:PlayerSpawn( ply )
 	  ply:Give( "weapon_physcannon" )
       ply:Give( "weapon_physgun" )
       ply:Give( "gmod_tool" )
-end
-
-function GM:PlayerInitialSpawn( ply )
-    ply:SetNWInt( "Money", 5000 )
 end
