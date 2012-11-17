@@ -16,5 +16,5 @@ function GM:PlayerSpawn( ply )
 end
 
 function GM:PlayerInitialSpawn( ply )
-    
+    ply:SetNWInt( "Money", 5000 )
 end
