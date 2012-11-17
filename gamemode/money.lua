@@ -16,7 +16,7 @@ function GetMoney(ply)
 end
 
 function CanAfford( ply, amount )
-	if GetMoney(ply) < amount then
+	if tonumber(GetMoney(ply)) < tonumber(amount) then
 		return false
 	else
 		return true

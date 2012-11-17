@@ -9,9 +9,4 @@ function buyprint_bronze( ply, cmd, args )
 		printer:Remove()
 	end
 end
-
-function printable()
-	local x = {5,3,2,1}
-	PrintTable(x)
-end
-concommand.Add("buyprint_bronze", buyprint_bronze)
+Add("buyprint_bronze", buyprint_bronze)

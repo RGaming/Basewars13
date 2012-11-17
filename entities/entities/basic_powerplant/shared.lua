@@ -6,4 +6,5 @@ ENT.Author			= "[RG]Uggleking"
 ENT.Contact			= "Don't"
 ENT.Purpose			= "Make it rain baby"
 ENT.Instructions	= "Use with care. Always handle with gloves."
-ENT.PowerSlots			= 5
+ENT.PowerSlots		= 5
+ENT.Price 			= 1000
