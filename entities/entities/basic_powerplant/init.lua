@@ -35,6 +35,7 @@ function ENT:Think()
 
 	--Move entities to the end of the PoweredEntities table
 	i=5
+	TempTable = {}
 	for key, value in pairs(self.PoweredEntities) do
 		TempTable[i] = value
 		i = i - 1
