@@ -17,6 +17,7 @@ end
 
 function ENT:Use( activator, caller )
 	AddMoney(activator, self.worth)
+	self:Remove()
 end
 
 function ENT:SetWorth( worth )
