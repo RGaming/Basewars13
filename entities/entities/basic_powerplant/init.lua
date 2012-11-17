@@ -13,20 +13,55 @@ function ENT:Initialize()
 		phys:Wake()
 	end
 	--
-	local slots_taken = 0
+	self.SlotsUsed = 0
+	self.PoweredEntities = {}
 end
 
 function ENT:Use( activator, caller )
 	return
 end
 
-function ENT:RemoveSlots()
-	
-end
-
-function ENT:Think(  )
+function ENT:Think()
 	self.Entity:NextThink(CurTime()+1)
-	return true
+	local EmptySlots = 0
+	--Invalidate entities that don't exist and count up the empty slots
+	for i=1, self.PowerSlots, 1 do
+		if not self.PoweredEntities[i]:IsValid()
+			self.PoweredEntities[i] = nil
+			EmptySlots = EmptySlots + 1
+		end
+	end
+	self.SlotsUsed = self.PowerSlots - EmptySlots
+
+	--Move entities to the end of the PoweredEntities table
+	i=5
+	for key, value in pairs(self.PoweredEntities) do
+		TempTable[i] = value
+		i = i - 1
+	end
+	for key, value in pairs(TempTable) do
+		self.PoweredEntities[key] = value
+	end
+
+	--Insert new entities into the PoweredEntities table
+	if self.SlotsUsed < self.PowerSlots do
+		i = 1
+		local NewEntityList = ents.FindInSphere(self:GetPos(), self.PowerDist)
+		for key, value in pairs(NewEntityList) do
+			if value.PowerUsage != nil and self.SlotsUsed < self.PowerSlots do
+				self.PoweredEntities[i] = value
+				self.SlotsUsed = self.SlotsUsed + 1
+				i = i + 1
+			else
+				break
+			end
+		end
+	end
+
+	--Power the entities in the PoweredEntities table
+	for key, value in pairs(self.PoweredEntities) do
+		value:Power()
+	end
 end
 
 -- function ENT:Think()

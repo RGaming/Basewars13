@@ -32,9 +32,10 @@ function ENT:Use( activator, caller )
 	return
 end
 
-function ENT:Power( Source )
-	if Source:CanPower(self.PowerUsage) then
-		Source:RemoveSlots(self.PowerUsage)
-		self.Powered = true
-	end
+function ENT:Power()
+	self.Powered = true
+end
+
+function ENT:UnPower()
+	self.Powered = false
 end
