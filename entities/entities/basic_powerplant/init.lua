@@ -26,7 +26,7 @@ function ENT:Think()
 	local EmptySlots = 0
 	--Invalidate entities that don't exist and count up the empty slots
 	for i=1, self.PowerSlots, 1 do
-		if not self.PoweredEntities[i]:IsValid() then
+		if not IsValid(self.PoweredEntities[i]) then
 			self.PoweredEntities[i] = nil
 			EmptySlots = EmptySlots + 1
 		end
