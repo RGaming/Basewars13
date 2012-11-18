@@ -41,7 +41,7 @@ function ENT:Use( activator, caller )
 end
 
 function ENT:OnRemove()
-	timer.Destroy( self:EntIndex.."paytimer" )
+	timer.Destroy( self:EntIndex().."paytimer" )
 end
 
 function ENT:Power()
