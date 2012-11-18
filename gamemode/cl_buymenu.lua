@@ -25,6 +25,15 @@ function testpanel() -- Create the function
     	RunConsoleCommand( "buy_entity", "basic_powerplant" ) -- What happens when you press the button
     	DermaPanel:Remove()
     end
-
 end -- ending the frameunction
 concommand.Add("menutest", testpanel) 
+
+local b = false;
+hook.Add("Think", "keyboardevents", function()
+    if input.IsKeyDown(KEY_F2) and (not b) then
+       b = true;
+       testpanel()
+    elseif (not input.IsKeyDown(KEY_F2)) and b then
+        b = false;
+    end
+end)
