@@ -9,3 +9,5 @@ ENT.Instructions	= "Use with care. Always handle with gloves."
 ENT.PowerSlots		= 5
 ENT.Price 			= 1000
 ENT.PowerDist       = 1024
+--ENT.Delay 		= 60
+--ENT.UseCost 		= 5

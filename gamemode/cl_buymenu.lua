@@ -10,7 +10,7 @@ function buy_menu()
 	Panel:ShowCloseButton( true )
 	Panel:MakePopup()
 
-	models = {'models/props_c17/furnitureStove001a.mdl','models/props_c17/consolebox01a.mdl','models/props_c17/FurnitureWashingmachine001a.mdl' }
+	models = {'models/props_c17/furnitureStove001a.mdl','models/props_c17/consolebox01a.mdl','models/props_lab/reciever_cart.mdl' }
 	ent_names = {'basic_powerplant', 'money_printer_bronze', 'dispenser'}
 	entities = {vgui.Create( "SpawnIcon" , Panel ), vgui.Create( "SpawnIcon" , Panel ), vgui.Create( "SpawnIcon" , Panel )}
 	for i = 1, 3 do

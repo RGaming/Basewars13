@@ -15,6 +15,7 @@ function ENT:Initialize()
 	--
 	self.SlotsUsed = 0
 	self.PoweredEntities = {}
+	timer.Create(self:EntIndex().."takepay", self.Delay, 0, function() self:takepay() end)
 end
 
 function ENT:Use( activator, caller )
@@ -24,6 +25,7 @@ end
 function ENT:OnRemove()
 	for key, value in pairs(self.PoweredEntities) do
 		value:UnPower()
+		timer.Destroy(self:EntIndex().."takepay")
 	end
 end
 
@@ -78,4 +80,8 @@ function ENT:Think()
 	for key, value in pairs(self.PoweredEntities) do
 		value:Power()
 	end
+end
+
+function ENT:takepay(  )
+	RemoveMoney(self.Owner, self.UseCost)
 end
