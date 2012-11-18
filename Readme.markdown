@@ -1,7 +1,7 @@
 # [RGaming] Basewars 13
 
 ##About
-A complete remake of [RGaming]Base wars for Garry's mod 13
+A complete remake of [RGaming]Basewars for Garry's Mod 13
 
 ##Requirement
 Your server will need models from: (tf, css)
@@ -11,5 +11,6 @@ Your server will need models from: (tf, css)
 
 ##Credits
 [RG]Uggleking - Lead Developer
-Nickelpro - Co-Developer / SQL monkey
+
+[RG]nickelpro - Co-Developer / SQL monkey
 
