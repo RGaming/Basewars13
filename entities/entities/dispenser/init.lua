@@ -16,10 +16,15 @@ function ENT:Initialize()
 end
 
 function ENT:Use( activator, caller )
-	AddMoney(activator, self.worth)
-	self:Remove()
+	Heal(activator)
+	Resupply(activator)
 end
 
-function ENT:SetWorth( worth )
-	self.worth = worth
+function Heal( ply )
+	ply:SetHealth(ply:Health() + 20)
+end
+
+function Resupply( ply )
+	weapon = ply:GetActiveWeapon()
+	ply:GiveAmmo(weapon:Clip1() * 2, weapon:GetPrimaryAmmoType())
 end
