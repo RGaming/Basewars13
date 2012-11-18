@@ -51,7 +51,6 @@ function ENT:Think()
 		i = 1
 		local NewEntityList = ents.FindInSphere(self:GetPos(), self.PowerDist)
 		for key, value in pairs(NewEntityList) do
-			print(string.format("%s: %s", value, value.PowerUsage))
 			if value.PowerUsage != nil and self.SlotsUsed + value.PowerUsage <= self.PowerSlots and not value:IsPowered() then
 				for j=1, value.PowerUsage, 1 do
 					self.PoweredEntities[i] = value
