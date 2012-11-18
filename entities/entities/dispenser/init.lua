@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()
 	-- Boiler plate
-	self.Entity:SetModel( "models/props_lab/reciever_cart.mdl" )
+	self.Entity:SetModel( self.Model )
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
