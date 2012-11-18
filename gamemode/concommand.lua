@@ -5,6 +5,7 @@ function buy_entity( ply, cmd, args )
 		RemoveMoney(ply, entity.Price)
 		entity:SetPos(tr.HitPos)
 		entity:Spawn()
+		entity.Owner = ply
 	else
 		entity:Remove()
 	end

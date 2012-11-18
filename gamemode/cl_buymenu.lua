@@ -17,7 +17,7 @@ function buy_menu()
 		entities[i]:SetPos(15, -40 + 60 * i)
 		entities[i]:SetModel(models[i])
 		entities[i].DoClick = function ()
-			RunConsoleCommand( "buy_entity", ent_names[i] )
+			LocalPlayer():ConCommand("buy_entity "..ent_names[i])
 		end
 	end
 end
