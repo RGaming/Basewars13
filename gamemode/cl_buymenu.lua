@@ -25,7 +25,7 @@ local b = false;
 hook.Add("Think", "keyboardevents", function()
     if input.IsKeyDown(KEY_F2) and (not b) then
        b = true;
-       testpanel()
+       buy_menu()
     elseif (not input.IsKeyDown(KEY_F2)) and b then
         b = false;
     end
