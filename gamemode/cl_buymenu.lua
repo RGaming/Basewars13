@@ -1,32 +1,25 @@
-function testpanel() -- Create the function
-	DermaPanel = vgui.Create("DFrame") -- Create the frame
-	DermaPanel:SetPos(50,50) -- set the frame's position on the screen
-	DermaPanel:SetSize(300, 300) -- set the frame size
-	DermaPanel:SetTitle( "Test" ) -- set the frame title
-	DermaPanel:SetVisible( true ) -- Make the frame visible
-	DermaPanel:MakePopup() -- make the frame popup
+function buy_menu()
+	local Panel = vgui.Create( "DFrame" ) -- Main Frame
+	Panel:SetPos( 200, 200 )
+	Panel:SetSize( 200, 200 )
+	Panel:SetTitle( "Spawn Icon Test" )
+	Panel:SetVisible( true )
+	Panel:SetDraggable( false )
+	Panel:ShowCloseButton( true )
+	Panel:MakePopup()
 
-	local bronze_print = vgui.Create( "DButton" )
-	bronze_print:SetParent( DermaPanel ) -- Set parent to our "DermaPanel"
-	bronze_print:SetText( "Spawn Printer" )
-	bronze_print:SetPos( 75, 50 )
-	bronze_print:SetSize( 150, 50 )
-	bronze_print.DoClick = function ()
-    	RunConsoleCommand( "buy_entity", "money_printer_bronze" ) -- What happens when you press the button
-    	DermaPanel:Remove()
+	models = {'models/props_c17/furnitureStove001a.mdl','models/props_c17/consolebox01a.mdl','models/props_c17/FurnitureWashingmachine001a.mdl' }
+	ent_names = {'basic_powerplant', 'money_printer_bronze', 'dispenser'}
+	entities = {vgui.Create( "SpawnIcon" , Panel ), vgui.Create( "SpawnIcon" , Panel ), vgui.Create( "SpawnIcon" , Panel )}
+	for i = 1, 3 do
+		entities[i]:SetPos(15, -40 + 60 * i)
+		entities[i]:SetModel(models[i])
+		entities[i].DoClick = function ()
+			RunConsoleCommand( "buy_entity", ent_names[i] )
+		end
 	end
-
-	local power_plant = vgui.Create( "DButton" )
-	power_plant:SetParent( DermaPanel ) -- Set parent to our "DermaPanel"
-	power_plant:SetText( "Spawn Power Plant" )
-	power_plant:SetPos( 75, 150 )
-	power_plant:SetSize( 150, 50 )
-	power_plant.DoClick = function ()
-    	RunConsoleCommand( "buy_entity", "basic_powerplant" ) -- What happens when you press the button
-    	DermaPanel:Remove()
-    end
-end -- ending the frameunction
-concommand.Add("menutest", testpanel) 
+end
+concommand.Add("openbuymenu", testpanel) 
 
 local b = false;
 hook.Add("Think", "keyboardevents", function()
@@ -37,3 +30,4 @@ hook.Add("Think", "keyboardevents", function()
         b = false;
     end
 end)
+
