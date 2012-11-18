@@ -62,7 +62,6 @@ function ENT:Think()
 	end
 
 	--Power the entities in the PoweredEntities table
-	PrintTable(self.PoweredEntities)
 	for key, value in pairs(self.PoweredEntities) do
 		value:Power()
 	end
