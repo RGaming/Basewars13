@@ -27,6 +27,12 @@ function ENT:Payday()
 	end
 end
 
+function ENT:Think(  )
+	if self.Powered then
+		self.Entity:SetColor(color(0,255,0,255))
+	end
+end
+
 function ENT:Use( activator, caller )
 	--self:Payday()
 	return

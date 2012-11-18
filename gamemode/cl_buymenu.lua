@@ -24,5 +24,5 @@ function testpanel() -- Create the function
     	RunConsoleCommand( "buy_entity", "basic_powerplant" ) -- What happens when you press the button
     end
 
-end -- ending the function
+end -- ending the frameunction
 concommand.Add("menutest", testpanel) 

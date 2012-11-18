@@ -56,15 +56,21 @@ function ENT:Think()
 					i = i + 1
 				end
 			else
+				--print("Broke")
 				break
 			end
 		end
+		--print("Broke II return of the broke")
 	end
 
 	--Power the entities in the PoweredEntities table
+	print("Broke III of the broke towers")
 	for key, value in pairs(self.PoweredEntities) do
+		print("Raep time")
+		print(value)
 		value:Power()
 	end
+	PrintTable(self.PoweredEntities)
 end
 
 -- function ENT:Think()
