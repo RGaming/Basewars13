@@ -35,7 +35,7 @@ function ENT:Think()
 	self.SlotsUsed = self.PowerSlots - EmptySlots
 
 	--Move existing entities to the end of the PoweredEntities table
-	i=5
+	i=self.PowerSlots
 	TempTable = {}
 	for key, value in pairs(self.PoweredEntities) do
 		TempTable[i] = value
