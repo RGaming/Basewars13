@@ -5,7 +5,7 @@ function testpanel() -- Create the function
 	DermaPanel:SetTitle( "Test" ) -- set the frame title
 	DermaPanel:SetVisible( true ) -- Make the frame visible
 	DermaPanel:MakePopup() -- make the frame popup
-	
+
 	local bronze_print = vgui.Create( "DButton" )
 	bronze_print:SetParent( DermaPanel ) -- Set parent to our "DermaPanel"
 	bronze_print:SetText( "Spawn Printer" )
