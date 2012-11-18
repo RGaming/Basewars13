@@ -12,7 +12,7 @@ function ENT:Initialize()
 	if (phys:IsValid()) then
 		phys:Wake()
 	end
-	timer.Create("timer1", self.Delay, 0, function () self:Payday() end)
+	timer.Create(self:EntIndex.."paytimer", self.Delay, 0, function () self:Payday() end)
 	self.Powered = false
 end
 
@@ -38,6 +38,10 @@ end
 function ENT:Use( activator, caller )
 	--self:Payday()
 	return
+end
+
+function ENT:OnRemove()
+	timer.Destroy( self:EntIndex.."paytimer" )
 end
 
 function ENT:Power()

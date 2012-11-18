@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()
 	-- Boiler plate
-	self.Entity:SetModel( "models/props_farm/padlock.mdl" )
+	self.Entity:SetModel( "models/props_c17/FurnitureWashingmachine001a.mdl" )
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
@@ -21,7 +21,8 @@ function ENT:Use( activator, caller )
 end
 
 function Heal( ply )
-	ply:SetHealth(ply:Health() + 20)
+	ply:SetHealth(math.Clamp( ply:Health() + 5, 0, 100 ))
+
 end
 
 function Resupply( ply )
