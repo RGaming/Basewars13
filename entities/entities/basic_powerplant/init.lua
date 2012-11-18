@@ -21,6 +21,12 @@ function ENT:Use( activator, caller )
 	return
 end
 
+function ENT:OnRemove()
+	for key, value in pairs(self.PoweredEntities) do
+		value:UnPower()
+	end
+end
+
 function ENT:Think()
 	self.Entity:NextThink(CurTime()+1)
 	local EmptySlots = 0
@@ -35,11 +41,18 @@ function ENT:Think()
 	self.SlotsUsed = self.PowerSlots - EmptySlots
 
 	--Move existing entities to the end of the PoweredEntities table
+	--Also, validate entity position while we're at it
 	i=self.PowerSlots
 	TempTable = {}
 	for key, value in pairs(self.PoweredEntities) do
-		TempTable[i] = value
-		i = i - 1
+		if value:GetPos():Distance(self:GetPos())<=self.PowerDist then
+			TempTable[i] = value
+			i = i - 1
+		else
+			value:UnPower()
+			self.SlotsUsed = self.SlotsUsed - 1
+		end
+
 	end
 	self.PoweredEntities = {}
 	for key, value in pairs(TempTable) do

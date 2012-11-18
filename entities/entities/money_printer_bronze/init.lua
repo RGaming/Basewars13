@@ -30,6 +30,8 @@ end
 function ENT:Think(  )
 	if self.Powered then
 		self.Entity:SetColor(Color(0,255,0,255))
+	else
+		self.Entity:SetColor(Color(255,255,255,255))
 	end
 end
 
