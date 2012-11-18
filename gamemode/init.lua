@@ -1,6 +1,7 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "HUD.lua" )
+AddCSLuaFile( "cl_buymenu.lua" )
 
 include( "shared.lua" )
 include("money.lua")
