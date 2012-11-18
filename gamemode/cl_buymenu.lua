@@ -13,6 +13,7 @@ function testpanel() -- Create the function
 	bronze_print:SetSize( 150, 50 )
 	bronze_print.DoClick = function ()
     	RunConsoleCommand( "buy_entity", "money_printer_bronze" ) -- What happens when you press the button
+    	DermaPanel:Remove()
 	end
 
 	local power_plant = vgui.Create( "DButton" )
@@ -22,6 +23,7 @@ function testpanel() -- Create the function
 	power_plant:SetSize( 150, 50 )
 	power_plant.DoClick = function ()
     	RunConsoleCommand( "buy_entity", "basic_powerplant" ) -- What happens when you press the button
+    	DermaPanel:Remove()
     end
 
 end -- ending the frameunction

@@ -8,6 +8,11 @@ include("money.lua")
 include("concommand.lua")
 include( "database.lua")
 
+function GM:PlayerInitialSpawn( ply )
+	ply:ConCommand("say Binding!")
+	ply:ConCommand( "Bind F2 menutest" )
+end
+
 function GM:PlayerSpawn( ply )
       ply:SetGravity( 0.75 )
       ply:SetMaxHealth( 100, true )

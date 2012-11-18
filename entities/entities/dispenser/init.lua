@@ -4,8 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()
 	-- Boiler plate
-	self.Entity:SetModel( "models/props_lab/jar01a.mdl" )
-	self.Entity:SetColor(150, 50, 50, 255)
+	self.Entity:SetModel( "models/props_farm/padlock.mdl" )
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
@@ -17,10 +16,10 @@ function ENT:Initialize()
 end
 
 function ENT:Use( activator, caller )
-	self:AddEffect(activator)
+	AddMoney(activator, self.worth)
 	self:Remove()
 end
 
-function ENT:AddEffect( ply )
-	
+function ENT:SetWorth( worth )
+	self.worth = worth
 end
