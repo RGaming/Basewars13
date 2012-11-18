@@ -19,7 +19,7 @@ function buy_menu()
 		end
 	end
 end
-concommand.Add("openbuymenu", testpanel) 
+concommand.Add("openbuymenu", buy_menu) 
 
 local b = false;
 hook.Add("Think", "keyboardevents", function()
