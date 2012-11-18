@@ -15,6 +15,20 @@ function ENT:Initialize()
 	--
 end
 
+function ENT:Think()
+	entities = ents.FindInSphere(self:GetPos(), 10)	
+	for k,v in pairs(entities) do
+		if v.worth != nil && v:EntIndex() != self:EntIndex() then
+			local ent = ents.Create("cash")
+			ent:SetWorth(self:GetWorth() + v:GetWorth())
+			ent:SetPos(self:GetPos())
+			ent:Spawn()
+			self:Remove()
+			v:Remove()
+		end
+	end
+end
+
 function ENT:Use( activator, caller )
 	AddMoney(activator, self.worth)
 	self:Remove()
@@ -22,4 +36,8 @@ end
 
 function ENT:SetWorth( worth )
 	self.worth = worth
+end
+
+function ENT:GetWorth(  )
+	return self.worth
 end
