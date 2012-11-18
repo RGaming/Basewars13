@@ -12,7 +12,7 @@ function ENT:Initialize()
 	if (phys:IsValid()) then
 		phys:Wake()
 	end
-	timer.Create(self:EntIndex.."paytimer", self.Delay, 0, function () self:Payday() end)
+	timer.Create(self:EntIndex().."paytimer", self.Delay, 0, function () self:Payday() end)
 	self.Powered = false
 end
 
