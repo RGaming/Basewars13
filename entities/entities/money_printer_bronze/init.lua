@@ -20,7 +20,7 @@ function ENT:Payday()
 	if self.Powered then
 		local cash = ents.Create("cash")
 		local pay = math.random(self.PayLow, self.PayHigh)
-		cash:SetWorth(self.pay)
+		cash:SetWorth(pay)
 		position = self.GetPos(self)
 		cash:SetPos(position)
 		cash:Spawn()

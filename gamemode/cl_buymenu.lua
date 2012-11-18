@@ -1,5 +1,7 @@
+local Panel = vgui.Create( "DFrame" )
+Panel:Hide()
 function buy_menu()
-	local Panel = vgui.Create( "DFrame" ) -- Main Frame
+	Panel:Show()
 	Panel:SetPos( 200, 200 )
 	Panel:SetSize( 200, 200 )
 	Panel:SetTitle( "Spawn Icon Test" )
@@ -27,6 +29,7 @@ hook.Add("Think", "keyboardevents", function()
        b = true;
        buy_menu()
     elseif (not input.IsKeyDown(KEY_F2)) and b then
+        Panel:Hide()
         b = false;
     end
 end)
