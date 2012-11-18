@@ -24,6 +24,7 @@ end
 function ENT:Think()
 	self.Entity:NextThink(CurTime()+1)
 	local EmptySlots = 0
+
 	--Invalidate entities that don't exist and count up the empty slots
 	for i=1, self.PowerSlots, 1 do
 		if not IsValid(self.PoweredEntities[i]) then
@@ -33,7 +34,7 @@ function ENT:Think()
 	end
 	self.SlotsUsed = self.PowerSlots - EmptySlots
 
-	--Move entities to the end of the PoweredEntities table
+	--Move existing entities to the end of the PoweredEntities table
 	i=5
 	TempTable = {}
 	for key, value in pairs(self.PoweredEntities) do
@@ -50,35 +51,20 @@ function ENT:Think()
 		i = 1
 		local NewEntityList = ents.FindInSphere(self:GetPos(), self.PowerDist)
 		for key, value in pairs(NewEntityList) do
-			if value.PowerUsage != nil and self.SlotsUsed + value.PowerUsage <= self.PowerSlots then
+			print(string.format("%s: %s", value, value.PowerUsage))
+			if value.PowerUsage != nil and self.SlotsUsed + value.PowerUsage <= self.PowerSlots and not value:IsPowered() then
 				for j=1, value.PowerUsage, 1 do
 					self.PoweredEntities[i] = value
 					self.SlotsUsed = self.SlotsUsed + 1
 					i = i + 1
 				end
-			else
-				--print("Broke")
-				break
 			end
 		end
-		--print("Broke II return of the broke")
 	end
 
 	--Power the entities in the PoweredEntities table
-	print(self.PoweredEntities)
 	PrintTable(self.PoweredEntities)
 	for key, value in pairs(self.PoweredEntities) do
-		print("Raep time")
-		print(value)
 		value:Power()
 	end
 end
-
--- function ENT:Think()
--- 	local x = ents.FindInSphere(self:GetPos(), 1024) -- List of entities nearby
--- 	for k, v in pairs(x) do
--- 		if v.PowerUsage > 0 and not v.Powered then
--- 			v:Power(self)
--- 		end
--- 	end
--- end

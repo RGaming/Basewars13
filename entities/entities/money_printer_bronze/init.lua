@@ -13,7 +13,7 @@ function ENT:Initialize()
 		phys:Wake()
 	end
 	timer.Create("timer1", self.Delay, 0, function () self:Payday() end)
-	local Powered = false
+	self.Powered = false
 end
 
 function ENT:Payday()
@@ -44,4 +44,8 @@ end
 
 function ENT:UnPower()
 	self.Powered = false
+end
+
+function ENT:IsPowered()
+	return self.Powered
 end
