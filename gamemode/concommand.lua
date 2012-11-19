@@ -10,6 +10,7 @@ function buy_entity( ply, cmd, args )
 		entity:Remove()
 	end
 end
+concommand.Add("buy_entity", buy_entity)
 
 function drop_money( ply, cmd, args )
 	local tr = ply:GetEyeTrace()
@@ -27,5 +28,4 @@ function drop_money( ply, cmd, args )
 		end
 	end
 end
-concommand.Add("buy_entity", buy_entity)
 concommand.Add("drop_money", drop_money)
