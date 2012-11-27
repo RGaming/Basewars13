@@ -14,24 +14,21 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
+	self.Entity:SetColor(self.PrintColor)
+	self.Entity:SetMaterial( "models/debug/debugwhite" )
 	local phys = self:GetPhysicsObject()
 	if (phys:IsValid()) then
 		phys:Wake()
 	end
 	timer.Create(self:EntIndex().."paytimer", self.Delay, 0, function () self:Payday() end)
 	self.Powered = false
-	self:SetAmount(self.MaxHealth)
-	self:SetBuyer(self.Buyer)
 end
 
 function ENT:Payday()
 	if self.Powered then
-		local cash = ents.Create("cash")
 		local pay = math.random(self.PayLow, self.PayHigh)
-		cash:SetWorth(pay)
-		position = self.GetPos(self)
-		cash:SetPos(position)
-		cash:Spawn()
+		local position = self.GetPos(self)
+		DropMoney(position, pay)
 	end
 end
 

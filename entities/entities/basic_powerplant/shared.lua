@@ -1,5 +1,5 @@
 ENT.Type = "anim"
-ENT.Base = "base_gmodentity"
+ENT.Base = "test_base"
  
 ENT.PrintName		= "Basic Power Plant"
 ENT.Author			= "[RG]Uggleking [RG]nickelpro"
@@ -15,3 +15,4 @@ ENT.UseCost 		= 5
 ENT.Player 			= nil
 ENT.Spawnable 		= true
 ENT.Basewars 		= true
+ENT.MaxHealth 		= 100

@@ -3,9 +3,10 @@ function buy_entity( ply, cmd, args )
 	local tr = ply:GetEyeTrace()
 	if CanAfford(ply, entity.Price) then
 		RemoveMoney(ply, entity.Price)
-		entity:SetPos(tr.HitPos)
+		entity:SetPos(tr.HitPos + Vector(0,0,60))
 		entity:Spawn()
 		entity:SetBuyer(ply:Nick())
+		entity:SetAmount(entity.MaxHealth)
 	else
 		entity:Remove()
 	end
@@ -29,3 +30,11 @@ function drop_money( ply, cmd, args )
 	end
 end
 concommand.Add("drop_money", drop_money)
+
+function Collision_bounds( ply, cmd, args )
+	local tr = ply:GetEyeTrace()
+	if tr.Entity != nil then
+		print(tr.Entity:GetCollisionBounds())
+	end
+end
+concommand.Add("collison", Collision_bounds)

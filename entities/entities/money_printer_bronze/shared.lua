@@ -16,4 +16,4 @@ ENT.Spawnable 		= true
 ENT.Basewars 		= true
 ENT.MaxHealth 		= 200
 ENT.Buyer 			= "WHYYY"
-ENT.HealthRing		= {100,27,0} -- What the fuck this does is going to need some experimentation
+ENT.PrintColor = Color(167, 91, 16, 255)
