@@ -2,9 +2,15 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include('shared.lua')
 
+function ENT:SetupDataTables()
+	self:NetworkVar( "Float", 0, "Amount" );
+	self:NetworkVar( "String", 1, "Buyer");
+	self:NetworkVar( "Bool", 2, "Powered" );
+end
+
 function ENT:Initialize()
 	-- Boiler plate
-	self.Entity:SetModel( "models/props_c17/consolebox01a.mdl" )
+	self.Entity:SetModel( "models/props_lab/reciever01b.mdl" )
 	self.Entity:PhysicsInit(SOLID_VPHYSICS)
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
@@ -14,6 +20,8 @@ function ENT:Initialize()
 	end
 	timer.Create(self:EntIndex().."paytimer", self.Delay, 0, function () self:Payday() end)
 	self.Powered = false
+	self:SetAmount(self.MaxHealth)
+	self:SetBuyer(self.Buyer)
 end
 
 function ENT:Payday()
@@ -28,11 +36,6 @@ function ENT:Payday()
 end
 
 function ENT:Think(  )
-	if self.Powered then
-		self.Entity:SetColor(Color(0,255,0,255))
-	else
-		self.Entity:SetColor(Color(255,255,255,255))
-	end
 end
 
 function ENT:Use( activator, caller )
@@ -45,13 +48,13 @@ function ENT:OnRemove()
 end
 
 function ENT:Power()
-	self.Powered = true
+	self:SetPowered(true)
 end
 
 function ENT:UnPower()
-	self.Powered = false
+	self:SetPowered(false)
 end
 
 function ENT:IsPowered()
-	return self.Powered
+	return self:GetPowered()
 end

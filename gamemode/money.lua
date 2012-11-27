@@ -37,3 +37,10 @@ function RemoveMoney( ply, amount )
 	ply:SetNWInt("Money", ply:GetNWInt("Money", 5000) - amount)
 	UpdatePlayer(ply:SteamID(), GetMoney(ply))
 end
+
+function DropMoney(pos, amount)
+	local cash = ents.Create("cash")
+	cash:SetWorth(amount)
+	cash:SetPos(pos)
+	cash:Spawn()
+end
