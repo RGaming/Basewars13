@@ -6,6 +6,12 @@ include('shared.lua')
 --Network functions are for casuals, we'll be 
 --using nothing but clever loop logic today! 
 
+function ENT:SetupDataTables()
+	self:NetworkVar( "Float", 0, "Amount" );
+	self:NetworkVar( "String", 1, "Buyer");
+	self:NetworkVar( "Int", 2, "Slots" );
+end
+
 function ENT:Initialize()
 	-- Boiler plate
 	self.Entity:SetModel( "models/props_c17/furnitureStove001a.mdl" )
@@ -18,6 +24,7 @@ function ENT:Initialize()
 	end
 	--
 	self.SlotsUsed = 0
+	self:SetSlots(self.SlotsUsed)
 	--PoweredEntities is actually totally unsafe, there is no reliable way to find out what
 	--entities a Power Plant is powering. That said, PoweredEntities is a pretty good guess
 	self.PoweredEntities = {}
@@ -79,7 +86,7 @@ function ENT:Think()
 		i = 1
 		local NewEntityList = ents.FindInSphere(self:GetPos(), self.PowerDist)
 		for key, value in pairs(NewEntityList) do
-			if value.PowerUsage != nil and self.SlotsUsed + value.PowerUsage <= self.PowerSlots and not value:IsPowered() then
+			if value.PowerUsage != nil and value.PowerUsage != 0 and self.SlotsUsed + value.PowerUsage <= self.PowerSlots and not value:IsPowered() then
 				for j=1, value.PowerUsage, 1 do
 					self.PoweredEntities[i] = value
 					self.SlotsUsed = self.SlotsUsed + 1
@@ -93,4 +100,5 @@ function ENT:Think()
 	for key, value in pairs(self.PoweredEntities) do
 		value:Power()
 	end
+	self:SetSlots(self.SlotsUsed)
 end

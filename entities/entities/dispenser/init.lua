@@ -26,7 +26,7 @@ function ENT:Use( activator, caller )
 	if timer.Exists(self:EntIndex().."resup") then  --If we've already resupplied recently then end
 	
 	else
-		timer.Create(timer.Create(self:EntIndex().."resup", 1, 1, function() self:Resupply(activator) end)) --resupply every secound
+		timer.Create(self:EntIndex().."resup", 1, 1, function() Resupply(activator) end) --resupply every secound
 	end
 end
 

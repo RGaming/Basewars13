@@ -25,7 +25,7 @@ function ENT:Initialize()
 end
 
 function ENT:Payday()
-	if self.Powered then
+	if self:GetPowered() then
 		local pay = math.random(self.PayLow, self.PayHigh)
 		local position = self.GetPos(self)
 		DropMoney(position, pay)

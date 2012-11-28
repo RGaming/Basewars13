@@ -1,8 +1,8 @@
 include('shared.lua')
 
 function ENT:Initialize()
-	local min,max = self:GetCollisionBounds()
-	self.HealthRing = {self.MaxHealth, max.x * 20, 0}
+	self.min,self.max = self:GetCollisionBounds()
+	self.HealthRing = {self.MaxHealth, self.max.x * 20, 0}
 end
 
 function ENT:DrawEntityOutline(  )
@@ -24,7 +24,7 @@ function ENT:DrawEntityOutline(  )
 	Ang:RotateAroundAxis(Ang:Up(), 90)
 	Ang:RotateAroundAxis(eang:Right(),180)
 
-	cam.Start3D2D(Pos + Ang:Up() * 3.5, Ang, 0.11)--pos, eang, 1)
+	cam.Start3D2D(Pos + Ang:Up() * self.max.z, Ang, 0.11)
 		local health = 16*math.Round(22.5*(self.Entity:GetAmount()/self.HealthRing[1]))
 		if health<=90 then
 			surface.SetDrawColor(255,0,0,200)
@@ -76,17 +76,21 @@ function ENT:DrawInfo()
 	Pos = self:GetPos()
 	Ang = self:GetAngles()
 	Ang:RotateAroundAxis(Ang:Up(), 90)
+	if self.Flip then Ang:RotateAroundAxis(Ang:Forward(),90) end
 
 	local Owner = self:GetBuyer()
 	local Name = self.PrintName
 	local Health = self:GetAmount()
-	local Powered = self:GetPowered()
-
 	local PoweredColor = Color(0,0,0,255)
-	if Powered then
-		PoweredColor = Color(147,204,26,255)
-	else
-		PoweredColor = Color(176,28,46,255)
+
+	if self.PowerUsage > 0 then
+		local Powered = self:GetPowered() --It's nil if it's a power plant
+
+		if Powered then
+			PoweredColor = Color(147,204,26,255)
+		else
+			PoweredColor = Color(176,28,46,255)
+		end
 	end
 
 	surface.SetFont( "DermaLarge" )
@@ -95,10 +99,15 @@ function ENT:DrawInfo()
 	local TextWidthPowered = surface.GetTextSize("Powered")
 	local TextWidthHealth = surface.GetTextSize(Health)
 
-	cam.Start3D2D(Pos + Ang:Up() * 3.7, Ang, 0.11)
+	self.FinishedPos = Vector(0,0,0)
+	if self.Flip then self.FinishedPos = Pos + Ang:Up() * self.max.x
+	else self.FinishedPos = Pos + Ang:Up() * self.max.z, Ang, 0.11 end
+
+	cam.Start3D2D(self.FinishedPos, Ang, 0.11)
 		draw.WordBox(2, 0 - TextWidthOwner * .5, -60, Owner, "DermaLarge", Color(0, 0, 0, 100), Color(255,255,255,255))
 		draw.WordBox(2, 0 - TextWidthName * .5, -20, Name, "DermaLarge", Color(0, 0, 0, 100), Color(255,255,255,255))
-		draw.WordBox(2, 0 - TextWidthPowered * .5, 20, "Powered", "DermaLarge", Color(0, 0, 0, 100), PoweredColor)
-		draw.WordBox(2, 0 - TextWidthHealth * .5, 60, Health, "DermaLarge", Color(0, 0, 0, 100), Color(255,255,255,255))
+		if self.PowerUsage > 0 then draw.WordBox(2, 0 - TextWidthPowered * .5, 20, "Powered", "DermaLarge", Color(0, 0, 0, 100), PoweredColor)
+		else  draw.WordBox(2, 0 - surface.GetTextSize(tostring(self:GetSlots()).." slots used of "..tostring(self.PowerSlots).." max") * .5, 20, tostring(self:GetSlots()).." slots used of "..tostring(self.PowerSlots).." max", "DermaLarge", Color(0, 0, 0, 100), Color(255,255,255,255)) end
+		draw.WordBox(2, 0 - TextWidthHealth * .5, 60, tostring(self.FinishedPos), "DermaLarge", Color(0, 0, 0, 100), Color(255,255,255,255))
 	cam.End3D2D()
 end

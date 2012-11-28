@@ -10,4 +10,5 @@ function ENT:Draw()
 	if LocalPlayer():GetEyeTrace().Entity == self then
 		self:DrawEntityOutline()
 	end
+	self:DrawInfo()
 end

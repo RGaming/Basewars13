@@ -12,3 +12,5 @@ ENT.Ent_Name 		= "dispenser"
 ENT.Spawnable 		= true
 ENT.Basewars 		= true
 ENT.MaxHealth 		= 100
+ENT.Flip 			= true
+ENT.PowerUsage		= 1
