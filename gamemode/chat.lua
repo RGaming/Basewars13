@@ -1,5 +1,5 @@
 
-ChatCommands = { }
+local ChatCommands = { }
 
 function AddChatCommand(cmd, callback)
 	table.insert(ChatCommands, {cmd = cmd, callback = callback});
