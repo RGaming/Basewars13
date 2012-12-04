@@ -7,6 +7,7 @@ include( "shared.lua" )
 include("money.lua")
 include("concommand.lua")
 include( "database.lua")
+include("chat.lua")
 
 function GM:PlayerSpawn( ply )
       ply:SetGravity( 0.75 )
