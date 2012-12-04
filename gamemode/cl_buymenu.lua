@@ -48,7 +48,7 @@ hook.Add( "PopulateBasewars", "AddEntityContent", function( pnlContent, tree, no
                 { 
                     nicename    = ent.PrintName or ent.ClassName,
                     spawnname   = ent.ClassName,
-                    material    = "entities/"..ent.ClassName..".png",
+                    material    = "materials/spawnicons/"..ent.Model,
                     admin       = ent.AdminOnly || ( !ent.Spawnable && ent.AdminSpawnable )
                             
                 })

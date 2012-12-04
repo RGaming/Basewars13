@@ -18,3 +18,4 @@ ENT.Spawnable 		= true
 ENT.Basewars 		= true
 ENT.MaxHealth 		= 100
 ENT.Fliped 			= false
+ENT.Model 			= "models/props_c17/furnitureStove001a.mdl"

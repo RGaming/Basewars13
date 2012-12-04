@@ -18,3 +18,4 @@ ENT.MaxHealth 		= 200
 ENT.Buyer 			= "WHYYY"
 ENT.PrintColor 		= Color(167, 91, 16, 255)
 ENT.Flip 			= false
+ENT.Model 			= "models/props_lab/reciever01b.mdl"
