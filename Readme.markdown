@@ -1,6 +1,6 @@
-# [RGaming] Basewars 13
+#This project is abandoned, go elsewhere
 
-##This project is abandoned, go elsewhere
+# [RGaming] Basewars 13
 
 ##Credits
 [RG]Uggleking - Lead Developer
