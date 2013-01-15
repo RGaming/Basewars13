@@ -1,13 +1,6 @@
 # [RGaming] Basewars 13
 
-##About
-A complete remake of [RGaming]Basewars for Garry's Mod 13
-
-##Requirement
-Your server will need models from: (tf, css)
-
-##Install
-1) Copy Basewars into your gamemode folder
+##This project is abandoned, go elsewhere
 
 ##Credits
 [RG]Uggleking - Lead Developer
